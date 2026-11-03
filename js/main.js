@@ -118,7 +118,7 @@ function renderCompare() {
         <p>You can add up to 3 properties from search to compare them side by side, or load a sample comparison to see how it works.</p>
         <div class="actions">
           <a class="btn" href="search.html">Browse listings</a>
-          <button class="outline" onclick="loadSampleCompare()">Load sample comparison</button>
+          <button class="outline" type="button" onclick="loadSampleCompare()">Load sample comparison</button>
         </div>
       </div>
     `;
@@ -172,8 +172,8 @@ function renderCompare() {
 
   h += '</table></div>';
   h += `
-    <div style="display:flex;gap:12px;margin-top:20px;flex-wrap:wrap;align-items:center">
-      <button class="outline" onclick="clearCompare()">Clear all comparison</button>
+    <div class="compare-footer-actions">
+      <button class="outline" type="button" onclick="clearCompare()">Clear all comparison</button>
       <a class="btn" href="search.html" style="background:var(--g)">Add more properties (${3 - ns.length} slots left)</a>
     </div>
   `;

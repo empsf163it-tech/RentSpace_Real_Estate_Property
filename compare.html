@@ -36,7 +36,16 @@
         <h2>Compare Properties</h2>
         <p>Review rent, deposit, bedrooms, size and amenities side by side.</p>
       </div>
-      <div id="comparecontent"></div>
+      <div id="comparecontent">
+        <div class="compare-empty">
+          <h3>No properties selected</h3>
+          <p>You can add up to 3 properties from search to compare them side by side, or load a sample comparison to see how it works.</p>
+          <div class="actions">
+            <a class="btn" href="search.html">Browse listings</a>
+            <button class="outline" type="button" onclick="loadSampleCompare()">Load sample comparison</button>
+          </div>
+        </div>
+      </div>
       <p class="meta" style="text-align:center;margin-top:20px">
         Comparison details are illustrative. Confirm exact terms and property information directly with the lister.
       </p>
@@ -153,7 +162,7 @@
                 <div class="meta" id="prev-meta">2 BHK · 1,200 sq.ft. · Semi-furnished</div>
                 <div class="actions">
                   <span class="btn" style="pointer-events:none;opacity:0.85">View details</span>
-                  <span class="outline" style="pointer-events:none;opacity:0.85;padding:10px 16px;border-radius:30px;font-size:12px">Compare</span>
+                  <span class="outline" style="pointer-events:none;opacity:0.85">Compare</span>
                 </div>
               </div>
             </article>

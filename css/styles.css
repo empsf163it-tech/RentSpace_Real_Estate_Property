@@ -42,6 +42,7 @@ button, .btn {
   color: white;
   cursor: pointer;
   display: inline-block;
+  text-align: center;
   font: inherit;
   font-size: 13px;
   font-weight: 600;
@@ -374,7 +375,7 @@ input:focus, select:focus, textarea:focus {
   width: 100%;
 }
 
-.actions button, .actions .btn {
+.actions button, .actions .btn, .actions .outline {
   font-size: 12px;
   padding: 10px 8px;
   height: 38px;
@@ -883,13 +884,22 @@ input:focus, select:focus, textarea:focus {
 }
 
 /* Compare Enhancements */
+.comparewrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.comparetable .btn {
+  white-space: nowrap;
+}
+
 .compare-empty {
   text-align: center;
   padding: 45px 24px;
   background: white;
   border: 1px solid var(--line);
   border-radius: 16px;
-  max-width: 600px;
+  max-width: 640px;
   margin: 0 auto 25px;
 }
 
@@ -907,6 +917,21 @@ input:focus, select:focus, textarea:focus {
 
 .compare-empty .actions {
   justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.compare-empty .actions button,
+.compare-empty .actions .btn {
+  flex: 0 1 auto;
+  min-width: 190px;
+  height: auto;
+  min-height: 42px;
+  padding: 11px 22px;
+  font-size: 13px;
+  white-space: normal;
+  line-height: 1.4;
+  border-radius: 30px;
 }
 
 .compare-col-header {
@@ -932,6 +957,7 @@ input:focus, select:focus, textarea:focus {
   border-radius: 12px;
   cursor: pointer;
   align-self: flex-start;
+  white-space: nowrap;
   transition: all 0.2s ease;
 }
 
@@ -939,6 +965,23 @@ input:focus, select:focus, textarea:focus {
   background: #fbf0ee;
   color: #b33927;
   border-color: #f3c2bc;
+}
+
+.compare-footer-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.compare-footer-actions button,
+.compare-footer-actions .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.4;
 }
 
 
@@ -951,11 +994,6 @@ input:focus, select:focus, textarea:focus {
 }
 
 @media (max-width: 1024px) {
-  .stats-grid,
-  .steps-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
   .layout {
     grid-template-columns: 215px 1fr;
     gap: 20px;
@@ -1299,6 +1337,69 @@ input:focus, select:focus, textarea:focus {
   padding-top: 12px;
 }
 
+/* Contact Page Social Connect Bar */
+.contact-social {
+  margin-top: 24px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.contact-social-info b {
+  display: block;
+  font-size: 14px;
+  color: var(--g);
+  margin-bottom: 2px;
+}
+
+.contact-social-info span {
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.contact-social-list {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.contact-social-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--cream);
+  border: 1px solid var(--line);
+  color: var(--g);
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+}
+
+.contact-social-btn:hover {
+  background: var(--o);
+  border-color: var(--o);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 14px rgba(184, 154, 97, 0.3);
+}
+
+.contact-social-btn svg {
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.contact-social-btn:hover svg {
+  transform: scale(1.08);
+}
+
 /* 3. About Stats & Numbers */
 .stats-grid {
   display: grid;
@@ -1310,7 +1411,7 @@ input:focus, select:focus, textarea:focus {
   background: white;
   border: 1px solid var(--line);
   border-radius: 16px;
-  padding: 30px 20px;
+  padding: 28px 16px;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -1333,7 +1434,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 .stat-number {
-  font-size: 32px;
+  font-size: clamp(24px, 2.5vw, 32px);
   font-weight: 700;
   color: var(--g);
   margin-bottom: 6px;
@@ -1680,6 +1781,20 @@ input:focus, select:focus, textarea:focus {
 }
 
 /* Responsive adjustments for new sections and search filter */
+@media (max-width: 1024px) {
+  .stats-grid,
+  .steps-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .stat-card {
+    padding: 28px 20px;
+  }
+  .stat-number {
+    font-size: 30px;
+  }
+}
+
 @media (max-width: 900px) {
   .search-filter-row {
     grid-template-columns: 1fr 1fr;
@@ -1736,5 +1851,60 @@ input:focus, select:focus, textarea:focus {
   .steps-grid {
     grid-template-columns: 1fr;
     gap: 16px;
+  }
+  .compare-empty {
+    padding: 32px 18px;
+  }
+  .compare-empty .actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .compare-empty .actions button,
+  .compare-empty .actions .btn {
+    width: 100%;
+    min-width: 0;
+    flex: none;
+    min-height: 44px;
+    padding: 12px 16px;
+    font-size: 12.5px;
+  }
+  .compare-footer-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .compare-footer-actions button,
+  .compare-footer-actions .btn {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 12.5px;
+  }
+  .preview-box {
+    padding: 16px;
+  }
+  .calc-card {
+    padding: 22px 16px;
+  }
+  .calc-summary {
+    padding: 18px 14px;
+  }
+  .calc-row {
+    gap: 10px;
+  }
+  .calc-row b {
+    text-align: right;
+  }
+  .formbox {
+    padding: 22px 18px;
+  }
+  .contact-social {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .contact-social-btn {
+    width: 38px;
+    height: 38px;
   }
 }
