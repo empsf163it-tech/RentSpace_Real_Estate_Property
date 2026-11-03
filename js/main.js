@@ -261,8 +261,48 @@ function sortProps() {
    .forEach(x => e.appendChild(x));
 }
 
+
+// Mobile Hamburger Navigation Toggle
+function initMobileMenu() {
+  const btn = document.querySelector('.hamburger-btn');
+  const nav = document.querySelector('.links');
+  if (!btn || !nav) return;
+
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = nav.classList.toggle('nav-open');
+    btn.classList.toggle('active', isOpen);
+    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+
+  nav.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      nav.classList.remove('nav-open');
+      btn.classList.remove('active');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!nav.contains(e.target) && !btn.contains(e.target)) {
+      nav.classList.remove('nav-open');
+      btn.classList.remove('active');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && nav.classList.contains('nav-open')) {
+      nav.classList.remove('nav-open');
+      btn.classList.remove('active');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   highlightActiveNav();
+  initMobileMenu();
   renderCompare();
   updateCompareBadges();
 

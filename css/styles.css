@@ -79,7 +79,7 @@ input:focus, select:focus, textarea:focus {
   top: 0;
   background: white;
   border-bottom: 1px solid var(--line);
-  z-index: 10;
+  z-index: 1000;
 }
 
 .nav {
@@ -88,6 +88,7 @@ input:focus, select:focus, textarea:focus {
   align-items: center;
   justify-content: space-between;
   gap: 20px;
+  position: relative;
 }
 
 .logo {
@@ -157,6 +158,52 @@ input:focus, select:focus, textarea:focus {
   height: 2.5px;
   background: var(--o);
   border-radius: 2px;
+}
+
+/* Hamburger Toggle Button */
+.hamburger-btn {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 8px;
+  width: 42px;
+  height: 42px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  z-index: 101;
+}
+
+.hamburger-btn:hover {
+  background-color: var(--cream);
+  border-color: var(--o);
+}
+
+.hamburger-bar {
+  display: block;
+  width: 22px;
+  height: 2.5px;
+  background-color: var(--g);
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.25s ease, background-color 0.2s ease;
+}
+
+.hamburger-btn.active .hamburger-bar:nth-child(1) {
+  transform: translateY(7.5px) rotate(45deg);
+  background-color: var(--o);
+}
+
+.hamburger-btn.active .hamburger-bar:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-btn.active .hamburger-bar:nth-child(3) {
+  transform: translateY(-7.5px) rotate(-45deg);
+  background-color: var(--o);
 }
 
 .hero {
@@ -736,12 +783,66 @@ input:focus, select:focus, textarea:focus {
 }
 
 @media (max-width: 800px) {
+  .hamburger-btn {
+    display: flex;
+  }
+
+  .nav {
+    min-height: 64px;
+    padding: 8px 0;
+  }
+
   .links {
-    gap: 12px;
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 14px 18px 20px;
+    border-radius: 0 0 16px 16px;
+    box-shadow: 0 16px 36px rgba(56, 45, 40, 0.12);
+    border: 1px solid var(--line);
+    border-top: none;
+    gap: 6px;
+    z-index: 1000;
   }
+
+  .links.nav-open {
+    display: flex;
+  }
+
   .links a {
-    font-size: 12px;
+    padding: 12px 16px;
+    font-size: 14px;
+    border-radius: 8px;
+    color: var(--g);
+    font-weight: 500;
+    transition: background 0.2s ease, color 0.2s ease;
   }
+
+  .links a:hover {
+    background: var(--cream);
+    color: var(--o);
+  }
+
+  .links a.active {
+    background: rgba(184, 154, 97, 0.12);
+    color: var(--o);
+    font-weight: 700;
+  }
+
+  .links a.active::after {
+    display: none;
+  }
+
+  .footgrid {
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 20px;
+  }
+
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -757,15 +858,6 @@ input:focus, select:focus, textarea:focus {
 }
 
 @media (max-width: 600px) {
-  .nav {
-    align-items: flex-start;
-    padding: 15px 0;
-    flex-direction: column;
-  }
-  .links {
-    flex-wrap: wrap;
-    gap: 14px;
-  }
   .hero {
     min-height: 470px;
     background-position: 60%;
@@ -794,7 +886,31 @@ input:focus, select:focus, textarea:focus {
     grid-column: auto;
   }
   .footgrid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .footgrid > div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .footgrid p {
+    max-width: 100%;
+    margin: 8px 0 0;
+    line-height: 1.6;
+  }
+  .footer b {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+  }
+  .footer a {
+    margin: 6px 0;
+    font-size: 13px;
+  }
+  .social-links {
+    margin-top: 8px;
   }
   .detailphoto {
     height: 260px;
