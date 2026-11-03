@@ -426,14 +426,60 @@ input:focus, select:focus, textarea:focus {
 }
 
 .cta {
-  margin: 15px auto 45px;
-  background: #faf5ee;
-  border: 1px solid #ece3d5;
-  border-radius: 18px;
-  padding: 30px;
+  margin: 35px auto 55px;
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 38px 44px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 32px;
+  box-shadow: 0 8px 24px rgba(56, 45, 40, 0.04);
+}
+
+.cta > div {
+  flex: 1;
+}
+
+.cta .eyebrow {
+  margin-bottom: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--o);
+}
+
+.cta h2 {
+  margin: 0 0 10px;
+  font-size: 26px;
+  color: var(--g);
+  line-height: 1.25;
+}
+
+.cta p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+  max-width: 540px;
+}
+
+.cta .btn {
+  white-space: nowrap;
+  flex-shrink: 0;
+  padding: 14px 28px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 30px;
+  box-shadow: 0 4px 14px rgba(184, 154, 97, 0.28);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.cta .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(184, 154, 97, 0.38);
 }
 
 .pagehead {
@@ -875,9 +921,16 @@ input:focus, select:focus, textarea:focus {
     grid-template-columns: 1fr;
   }
   .cta {
-    align-items: flex-start;
-    gap: 15px;
+    align-items: stretch;
+    gap: 20px;
     flex-direction: column;
+    padding: 28px 22px;
+    margin: 25px auto 40px;
+  }
+  .cta .btn {
+    width: 100%;
+    text-align: center;
+    white-space: nowrap;
   }
   .formgrid {
     grid-template-columns: 1fr;
