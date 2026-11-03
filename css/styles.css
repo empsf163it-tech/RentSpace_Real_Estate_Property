@@ -280,16 +280,9 @@ input:focus, select:focus, textarea:focus {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 22px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
   align-items: stretch;
-}
-
-@media (max-width: 1024px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
 }
 
 .card {
@@ -801,15 +794,6 @@ input:focus, select:focus, textarea:focus {
   border-color: #f3c2bc;
 }
 
-/* Safeguard: If any 2-column grid has an odd last card, center it nicely */
-@media (max-width: 1024px) and (min-width: 601px) {
-  .grid > :nth-child(odd):last-child {
-    grid-column: 1 / -1;
-    max-width: 520px;
-    margin: 0 auto;
-    width: 100%;
-  }
-}
 
 /* List Property Enhancements */
 .list-layout {
@@ -820,6 +804,10 @@ input:focus, select:focus, textarea:focus {
 }
 
 @media (max-width: 860px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
   .list-layout {
     grid-template-columns: 1fr;
   }
@@ -906,9 +894,7 @@ input:focus, select:focus, textarea:focus {
     gap: 20px;
   }
 
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+
   .searchbar {
     grid-template-columns: 1fr 1fr;
   }
