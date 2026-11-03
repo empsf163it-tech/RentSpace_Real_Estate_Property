@@ -1,1 +1,282 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Compare | RentSpace</title><link rel="icon" type="image/png" href="favicon.png"><link rel="shortcut icon" href="favicon.ico"><link rel="stylesheet" href="css/styles.css"></head><body><header class="header"><div class="container nav"><a class="logo" href="index.html" aria-label="RentSpace Home"><img src="logo.png" alt="RentSpace" class="logo-img"></a><nav class="links"><a href="index.html">Home</a><a href="search.html">Search</a><a href="compare.html">Compare</a><a href="list-property.html">List Property</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav></div></header><main><section class="pagehead"><div class="container"><div class="eyebrow">Make a considered choice</div><h1>Compare properties</h1><p>Choose up to three properties from Search to compare key details.</p></div></section><section class="container section"><div id="comparecontent"><p class="panel">No properties selected yet. Visit <a href="search.html" style="color:var(--o)">Search Properties</a> and choose Compare on a listing.</p></div><p class="meta">Comparison details are illustrative. Confirm costs and property information with the lister.</p></section></main><footer class="footer"><div class="container"><div class="footgrid"><div><a class="logo" href="index.html" aria-label="RentSpace Home"><img src="logo-light.png" alt="RentSpace" class="logo-img footer-logo-img"></a><p>A clearer way to discover, compare and enquire about rental and sale properties.</p></div><div><b>Explore</b><a href="search.html">Search properties</a><a href="compare.html">Compare</a><a href="list-property.html">List property</a></div><div><b>Company</b><a href="about.html">About</a><a href="contact.html">Contact</a><a href="#">Privacy policy</a></div></div><div class="copy">© 2026 RentSpace. Demo listings only; details are illustrative and not verified.</div></div></footer><script src="js/main.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Compare & List | RentSpace</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <a class="logo" href="index.html" aria-label="RentSpace Home"><img src="logo.png" alt="RentSpace" class="logo-img"></a>
+      <nav class="links"><a href="index.html">Home</a><a href="search.html">Search</a><a href="compare.html" class="active">Compare & List</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="pagehead">
+      <div class="container">
+        <div class="eyebrow">Property Hub</div>
+        <h1>Compare & List Properties</h1>
+        <p>Review shortlisted properties side by side, and submit your property listing.</p>
+      </div>
+    </section>
+
+    <!-- Section 1: Compare Properties (Continuous) -->
+    <section class="container section" id="compare-section">
+      <div class="head">
+        <h2>Compare Properties</h2>
+        <p>Review rent, deposit, bedrooms, size and amenities side by side.</p>
+      </div>
+      <div id="comparecontent"></div>
+      <p class="meta" style="text-align:center;margin-top:20px">
+        Comparison details are illustrative. Confirm exact terms and property information directly with the lister.
+      </p>
+    </section>
+
+    <hr class="hub-section-divider">
+
+    <!-- Section 2: List a Property (Continuous) -->
+    <section class="container section" id="list-section">
+      <div class="head">
+        <h2>List Your Property</h2>
+        <p>Fill out the details below to share your rental or sale property with prospective occupants.</p>
+      </div>
+      <div class="list-layout">
+        <!-- Form -->
+        <form class="formbox" id="listing" style="margin:0">
+          <div class="notice" id="listnotice">
+            ✓ Property details submitted for review! We have updated your live session preview.
+          </div>
+          <div class="formgrid">
+            <div class="field full">
+              <label>Property title *</label>
+              <input id="prop-title" required placeholder="e.g. 2 BHK apartment near metro" oninput="updateListingPreview()">
+            </div>
+            <div class="field">
+              <label>Listing purpose *</label>
+              <select required id="prop-purpose">
+                <option value="">Choose</option>
+                <option>For rent</option>
+                <option>For sale</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Property type *</label>
+              <select required id="prop-type" onchange="updateListingPreview()">
+                <option value="">Choose</option>
+                <option>Apartment</option>
+                <option>Independent house</option>
+                <option>Villa</option>
+                <option>Commercial</option>
+                <option>Shared accommodation</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>City and locality *</label>
+              <input id="prop-loc" required placeholder="e.g. Gachibowli, Hyderabad" oninput="updateListingPreview()">
+            </div>
+            <div class="field">
+              <label>Rent or sale price *</label>
+              <input id="prop-price" required placeholder="e.g. ₹28,000" oninput="updateListingPreview()">
+            </div>
+            <div class="field">
+              <label>Security deposit</label>
+              <input id="prop-deposit" placeholder="e.g. ₹56,000">
+            </div>
+            <div class="field">
+              <label>Bedrooms / configuration</label>
+              <select id="prop-beds" onchange="updateListingPreview()">
+                <option>2 BHK</option>
+                <option>1 BHK</option>
+                <option>3 BHK</option>
+                <option>4+ BHK</option>
+                <option>Office space</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Built-up area</label>
+              <input id="prop-size" placeholder="e.g. 1,200 sq.ft." oninput="updateListingPreview()">
+            </div>
+            <div class="field">
+              <label>Furnishing status</label>
+              <select id="prop-furnish" onchange="updateListingPreview()">
+                <option>Semi-furnished</option>
+                <option>Furnished</option>
+                <option>Unfurnished</option>
+              </select>
+            </div>
+            <div class="field full">
+              <label>Contact name & email / phone *</label>
+              <input required placeholder="Your contact details">
+            </div>
+            <div class="field full">
+              <label>Property description</label>
+              <textarea rows="3" placeholder="Highlight amenities, restrictions, parking, lift, water supply and availability"></textarea>
+            </div>
+            <div class="field full">
+              <label>Property photos</label>
+              <input type="file" id="prop-photos" accept="image/jpeg,image/png,image/webp" multiple onchange="handlePhotoUpload(this)">
+              <small class="meta" id="photo-count" style="display:block;margin-top:4px">Accepted formats: JPG, PNG and WebP.</small>
+            </div>
+            <div class="field full">
+              <label>
+                <input type="checkbox" required style="width:auto"> I confirm that this information is accurate and I am authorized to submit this listing.
+              </label>
+            </div>
+            <div class="field full">
+              <button type="submit">Submit property details</button>
+            </div>
+          </div>
+        </form>
+
+        <!-- Simple Live Listing Preview Enhancement -->
+        <aside class="preview-sticky">
+          <div class="preview-box">
+            <h4>Live Listing Preview</h4>
+            <p class="meta" style="margin-bottom:14px">See how prospective tenants view your property card:</p>
+            <article class="card property" style="margin:0">
+              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80" alt="Preview property" id="prev-img">
+              <div class="body">
+                <span class="tag">Your Listing (Preview)</span>
+                <h3 id="prev-title">2 BHK apartment near metro</h3>
+                <div class="meta" id="prev-loc">Gachibowli, Hyderabad</div>
+                <div class="price" id="prev-price">₹28,000 <small>/ month</small></div>
+                <div class="meta" id="prev-meta">2 BHK · 1,200 sq.ft. · Semi-furnished</div>
+                <div class="actions">
+                  <span class="btn" style="pointer-events:none;opacity:0.85">View details</span>
+                  <span class="outline" style="pointer-events:none;opacity:0.85;padding:10px 16px;border-radius:30px;font-size:12px">Compare</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <hr class="hub-section-divider">
+
+    <!-- Section 3: Smart Affordability & Total Cost Estimator (New Unique Section) -->
+    <section class="container section" id="estimator-section">
+      <div class="head">
+        <div class="eyebrow">Financial Planning</div>
+        <h2>Estimate Your True Monthly Living Cost</h2>
+        <p>Calculate full occupancy expenses including rent, society maintenance, and estimated utilities.</p>
+      </div>
+
+      <div class="calc-card">
+        <div class="calc-grid">
+          <!-- Interactive Sliders -->
+          <div class="calc-inputs">
+            <div class="calc-group">
+              <label for="calc-rent">
+                Base Monthly Rent:
+                <span id="calc-rent-val">₹28,000</span>
+              </label>
+              <input type="range" class="calc-slider" id="calc-rent" min="10000" max="100000" step="1000" value="28000" oninput="updateCostCalculator()">
+              <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:4px">
+                <span>₹10,000</span>
+                <span>₹50,000</span>
+                <span>₹1,00,000</span>
+              </div>
+            </div>
+
+            <div class="calc-group">
+              <label for="calc-maint">
+                Society Maintenance:
+                <span id="calc-maint-val">₹3,500</span>
+              </label>
+              <input type="range" class="calc-slider" id="calc-maint" min="1000" max="15000" step="500" value="3500" oninput="updateCostCalculator()">
+              <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:4px">
+                <span>₹1,000</span>
+                <span>₹7,500</span>
+                <span>₹15,000</span>
+              </div>
+            </div>
+
+            <div class="calc-group">
+              <label for="calc-util">
+                Estimated Utilities & Internet:
+                <span id="calc-util-val">₹2,500</span>
+              </label>
+              <input type="range" class="calc-slider" id="calc-util" min="1000" max="10000" step="500" value="2500" oninput="updateCostCalculator()">
+              <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:4px">
+                <span>₹1,000</span>
+                <span>₹5,000</span>
+                <span>₹10,000</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Live Breakdown Summary Card -->
+          <div class="calc-summary">
+            <h4>Monthly Outflow Breakdown</h4>
+            <div class="calc-breakdown">
+              <div class="calc-row">
+                <span>Base Rent</span>
+                <b id="summary-rent">₹28,000</b>
+              </div>
+              <div class="calc-row">
+                <span>Society Maintenance</span>
+                <b id="summary-maint">₹3,500</b>
+              </div>
+              <div class="calc-row">
+                <span>Utilities & Broadband</span>
+                <b id="summary-util">₹2,500</b>
+              </div>
+              <div class="calc-row">
+                <span>Estimated Move-in Deposit</span>
+                <b id="summary-deposit">₹56,000 (approx 2 mos)</b>
+              </div>
+              <div class="calc-row total">
+                <span>Total Monthly Outflow</span>
+                <span id="summary-total">₹34,000</span>
+              </div>
+            </div>
+            <p class="meta" style="margin:14px 0 0;font-size:12px;line-height:1.5">
+              💡 <b>Tip:</b> Most financial planners advise keeping total housing costs below 35% of your take-home income.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footgrid">
+        <div>
+          <a class="logo" href="index.html" aria-label="RentSpace Home"><img src="logo-light.png" alt="RentSpace" class="logo-img footer-logo-img"></a>
+          <p>A clearer way to discover, compare and enquire about rental and sale properties.</p>
+        </div>
+        <div>
+          <b>Explore</b>
+          <a href="search.html">Search properties</a>
+          <a href="compare.html">Compare & List</a>
+          <a href="#">Privacy policy</a>
+        </div>
+        <div>
+          <b>Social Links</b>
+          <div class="social-links">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Facebook" title="Facebook">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram" title="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="WhatsApp" title="WhatsApp">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="copy">© 2026 RentSpace. Demo listings only; details are illustrative and not verified.</div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

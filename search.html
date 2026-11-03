@@ -1,1 +1,264 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Search | RentSpace</title><link rel="icon" type="image/png" href="favicon.png"><link rel="shortcut icon" href="favicon.ico"><link rel="stylesheet" href="css/styles.css"></head><body><header class="header"><div class="container nav"><a class="logo" href="index.html" aria-label="RentSpace Home"><img src="logo.png" alt="RentSpace" class="logo-img"></a><nav class="links"><a href="index.html">Home</a><a href="search.html">Search</a><a href="compare.html">Compare</a><a href="list-property.html">List Property</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav></div></header><main><section class="pagehead"><div class="container"><div class="eyebrow">Find your space</div><h1>Search properties</h1><p>Explore properties and narrow your options with practical filters.</p></div></section><div class="container layout"><aside class="filters"><h3>Refine your search</h3><div class="filtergroup"><b>Location</b><input id="loc" placeholder="City or locality"></div><div class="filtergroup"><b>Property type</b><label><input type="radio" name="type" value="all" checked> All</label><label><input type="radio" name="type" value="residential"> Residential</label><label><input type="radio" name="type" value="commercial"> Commercial</label></div><div class="filtergroup"><b>Maximum monthly price</b><select id="maxprice"><option value="999999">Any budget</option><option value="20000">₹20,000</option><option value="30000">₹30,000</option><option value="50000">₹50,000</option></select></div><button style="width:100%" onclick="filterProps()">Apply filters</button><button class="outline" style="width:100%;margin-top:8px" onclick="resetProps()">Reset</button></aside><section><div class="resulthead"><b id="count">6 example properties</b><select id="sort" onchange="sortProps()" style="width:auto"><option value="0">Recommended</option><option value="1">Price low to high</option><option value="2">Price high to low</option></select></div><div class="results" id="results"><article class="card property" data-location="gachibowli, hyderabad" data-type="residential" data-price="24000"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80" alt="Oakwood Residency" loading="lazy"><div class="body"><span class="tag">Example listing</span><h3>Oakwood Residency</h3><div class="meta">Gachibowli, Hyderabad</div><div class="price">₹24,000 <small>/ month</small></div><div class="meta">2 BHK · 1,100 sq.ft. · Semi-furnished</div><div class="actions"><a class="btn" href="property.html">View details</a><button class="outline" onclick="addCompare('Oakwood Residency')">Compare</button></div></div></article><article class="card property" data-location="kondapur, hyderabad" data-type="residential" data-price="38000"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80" alt="Palm Grove Villa" loading="lazy"><div class="body"><span class="tag">Example listing</span><h3>Palm Grove Villa</h3><div class="meta">Kondapur, Hyderabad</div><div class="price">₹38,000 <small>/ month</small></div><div class="meta">3 BHK · 1,650 sq.ft. · Furnished</div><div class="actions"><a class="btn" href="property.html">View details</a><button class="outline" onclick="addCompare('Palm Grove Villa')">Compare</button></div></div></article><article class="card property" data-location="miyapur, hyderabad" data-type="residential" data-price="18500"><img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=80" alt="Courtyard Home" loading="lazy"><div class="body"><span class="tag">Example listing</span><h3>Courtyard Home</h3><div class="meta">Miyapur, Hyderabad</div><div class="price">₹18,500 <small>/ month</small></div><div class="meta">2 BHK · 980 sq.ft. · Unfurnished</div><div class="actions"><a class="btn" href="property.html">View details</a><button class="outline" onclick="addCompare('Courtyard Home')">Compare</button></div></div></article><article class="card property" data-location="madhapur, hyderabad" data-type="residential" data-price="31000"><img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&w=900&q=80" alt="Lakeview Heights" loading="lazy"><div class="body"><span class="tag">Example listing</span><h3>Lakeview Heights</h3><div class="meta">Madhapur, Hyderabad</div><div class="price">₹31,000 <small>/ month</small></div><div class="meta">2 BHK · 1,250 sq.ft. · Semi-furnished</div><div class="actions"><a class="btn" href="property.html">View details</a><button class="outline" onclick="addCompare('Lakeview Heights')">Compare</button></div></div></article><article class="card property" data-location="hitec city, hyderabad" data-type="commercial" data-price="65000"><img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80" alt="Cedar Business Hub" loading="lazy"><div class="body"><span class="tag">Example listing</span><h3>Cedar Business Hub</h3><div class="meta">HITEC City, Hyderabad</div><div class="price">₹65,000 <small>/ month</small></div><div class="meta">Office · 1,900 sq.ft. · Fitted office</div><div class="actions"><a class="btn" href="property.html">View details</a><button class="outline" onclick="addCompare('Cedar Business Hub')">Compare</button></div></div></article><article class="card property" data-location="manikonda, hyderabad" data-type="residential" data-price="21000"><img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=82" alt="Garden View Apartment" loading="lazy"><div class="body"><span class="tag">Example listing</span><h3>Garden View Apartment</h3><div class="meta">Manikonda, Hyderabad</div><div class="price">₹21,000 <small>/ month</small></div><div class="meta">2 BHK · 1,050 sq.ft. · Semi-furnished</div><div class="actions"><a class="btn" href="property.html">View details</a><button class="outline" onclick="addCompare('Garden View Apartment')">Compare</button></div></div></article></div></section></div></main><footer class="footer"><div class="container"><div class="footgrid"><div><a class="logo" href="index.html" aria-label="RentSpace Home"><img src="logo-light.png" alt="RentSpace" class="logo-img footer-logo-img"></a><p>A clearer way to discover, compare and enquire about rental and sale properties.</p></div><div><b>Explore</b><a href="search.html">Search properties</a><a href="compare.html">Compare</a><a href="list-property.html">List property</a></div><div><b>Company</b><a href="about.html">About</a><a href="contact.html">Contact</a><a href="#">Privacy policy</a></div></div><div class="copy">© 2026 RentSpace. Demo listings only; details are illustrative and not verified.</div></div></footer><script src="js/main.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Search | RentSpace</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <a class="logo" href="index.html" aria-label="RentSpace Home"><img src="logo.png" alt="RentSpace" class="logo-img"></a>
+      <nav class="links">
+        <a href="index.html">Home</a>
+        <a href="search.html" class="active">Search</a>
+        <a href="compare.html">Compare & List</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="pagehead">
+      <div class="container">
+        <div class="eyebrow">Find your space</div>
+        <h1>Search properties</h1>
+        <p>Explore properties and narrow your options with practical filters.</p>
+      </div>
+    </section>
+
+    <!-- Search Layout: Filters + Results -->
+    <div class="container layout">
+      <aside class="filters">
+        <h3>Refine your search</h3>
+        <div class="filtergroup">
+          <b>Location</b>
+          <input id="loc" placeholder="City or locality">
+        </div>
+        <div class="filtergroup">
+          <b>Property type</b>
+          <label><input type="radio" name="type" value="all" checked> All</label>
+          <label><input type="radio" name="type" value="residential"> Residential</label>
+          <label><input type="radio" name="type" value="commercial"> Commercial</label>
+        </div>
+        <div class="filtergroup">
+          <b>Maximum monthly price</b>
+          <select id="maxprice">
+            <option value="999999">Any budget</option>
+            <option value="20000">₹20,000</option>
+            <option value="30000">₹30,000</option>
+            <option value="50000">₹50,000</option>
+          </select>
+        </div>
+        <button style="width:100%" onclick="filterProps()">Apply filters</button>
+        <button class="outline" style="width:100%;margin-top:8px" onclick="resetProps()">Reset</button>
+      </aside>
+
+      <section>
+        <div class="resulthead">
+          <b id="count">6 example properties</b>
+          <select id="sort" onchange="sortProps()" style="width:auto">
+            <option value="0">Recommended</option>
+            <option value="1">Price low to high</option>
+            <option value="2">Price high to low</option>
+          </select>
+        </div>
+
+        <div class="results" id="results">
+          <article class="card property" data-location="gachibowli, hyderabad" data-type="residential" data-price="24000">
+            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80" alt="Oakwood Residency" loading="lazy">
+            <div class="body">
+              <span class="tag">Example listing</span>
+              <h3>Oakwood Residency</h3>
+              <div class="meta">Gachibowli, Hyderabad</div>
+              <div class="price">₹24,000 <small>/ month</small></div>
+              <div class="meta">2 BHK · 1,100 sq.ft. · Semi-furnished</div>
+              <div class="actions">
+                <a class="btn" href="property.html">View details</a>
+                <button class="outline" onclick="addCompare('Oakwood Residency')">Compare</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card property" data-location="kondapur, hyderabad" data-type="residential" data-price="38000">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80" alt="Palm Grove Villa" loading="lazy">
+            <div class="body">
+              <span class="tag">Example listing</span>
+              <h3>Palm Grove Villa</h3>
+              <div class="meta">Kondapur, Hyderabad</div>
+              <div class="price">₹38,000 <small>/ month</small></div>
+              <div class="meta">3 BHK · 1,650 sq.ft. · Furnished</div>
+              <div class="actions">
+                <a class="btn" href="property.html">View details</a>
+                <button class="outline" onclick="addCompare('Palm Grove Villa')">Compare</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card property" data-location="miyapur, hyderabad" data-type="residential" data-price="18500">
+            <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=80" alt="Courtyard Home" loading="lazy">
+            <div class="body">
+              <span class="tag">Example listing</span>
+              <h3>Courtyard Home</h3>
+              <div class="meta">Miyapur, Hyderabad</div>
+              <div class="price">₹18,500 <small>/ month</small></div>
+              <div class="meta">2 BHK · 980 sq.ft. · Unfurnished</div>
+              <div class="actions">
+                <a class="btn" href="property.html">View details</a>
+                <button class="outline" onclick="addCompare('Courtyard Home')">Compare</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card property" data-location="madhapur, hyderabad" data-type="residential" data-price="31000">
+            <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&w=900&q=80" alt="Lakeview Heights" loading="lazy">
+            <div class="body">
+              <span class="tag">Example listing</span>
+              <h3>Lakeview Heights</h3>
+              <div class="meta">Madhapur, Hyderabad</div>
+              <div class="price">₹31,000 <small>/ month</small></div>
+              <div class="meta">2 BHK · 1,250 sq.ft. · Semi-furnished</div>
+              <div class="actions">
+                <a class="btn" href="property.html">View details</a>
+                <button class="outline" onclick="addCompare('Lakeview Heights')">Compare</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card property" data-location="hitec city, hyderabad" data-type="commercial" data-price="65000">
+            <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80" alt="Cedar Business Hub" loading="lazy">
+            <div class="body">
+              <span class="tag">Example listing</span>
+              <h3>Cedar Business Hub</h3>
+              <div class="meta">HITEC City, Hyderabad</div>
+              <div class="price">₹65,000 <small>/ month</small></div>
+              <div class="meta">Office · 1,900 sq.ft. · Fitted office</div>
+              <div class="actions">
+                <a class="btn" href="property.html">View details</a>
+                <button class="outline" onclick="addCompare('Cedar Business Hub')">Compare</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card property" data-location="manikonda, hyderabad" data-type="residential" data-price="21000">
+            <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=82" alt="Garden View Apartment" loading="lazy">
+            <div class="body">
+              <span class="tag">Example listing</span>
+              <h3>Garden View Apartment</h3>
+              <div class="meta">Manikonda, Hyderabad</div>
+              <div class="price">₹21,000 <small>/ month</small></div>
+              <div class="meta">2 BHK · 1,050 sq.ft. · Semi-furnished</div>
+              <div class="actions">
+                <a class="btn" href="property.html">View details</a>
+                <button class="outline" onclick="addCompare('Garden View Apartment')">Compare</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <!-- NEW SECTION: Neighborhood Spotlight & Rental Guide -->
+    <section class="section soft" style="margin-top:40px">
+      <div class="container">
+        <div class="head">
+          <div class="eyebrow">Neighborhood Guide</div>
+          <h2>Popular Hyderabad Localities at a Glance</h2>
+          <p>Compare benchmark rents, commute access and neighborhood vibes before searching.</p>
+        </div>
+        <div class="localities-grid">
+          <a class="locality-card" href="search.html?location=gachibowli" title="Filter properties in Gachibowli">
+            <img class="locality-thumb" src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80" alt="Gachibowli" loading="lazy">
+            <div class="locality-body">
+              <h3>Gachibowli</h3>
+              <div class="locality-price">₹22,000 – ₹42,000 / mo</div>
+              <div class="locality-features">
+                🚇 10 min to Financial District<br>
+                🏫 Near top international schools<br>
+                ✨ High gated communities
+              </div>
+            </div>
+          </a>
+
+          <a class="locality-card" href="search.html?location=hitec" title="Filter properties in HITEC City">
+            <img class="locality-thumb" src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" alt="HITEC City" loading="lazy">
+            <div class="locality-body">
+              <h3>HITEC City & Madhapur</h3>
+              <div class="locality-price">₹26,000 – ₹48,000 / mo</div>
+              <div class="locality-features">
+                🚇 Blue Line Metro station<br>
+                💼 Walking distance to major tech parks<br>
+                🍽️ Vibrant cafe & dining hub
+              </div>
+            </div>
+          </a>
+
+          <a class="locality-card" href="search.html?location=kondapur" title="Filter properties in Kondapur">
+            <img class="locality-thumb" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" alt="Kondapur" loading="lazy">
+            <div class="locality-body">
+              <h3>Kondapur</h3>
+              <div class="locality-price">₹20,000 – ₹38,000 / mo</div>
+              <div class="locality-features">
+                🌳 Next to Botanical Garden<br>
+                🛍️ Close to AMB & Sarath City Capital<br>
+                🏡 Ideal for working families
+              </div>
+            </div>
+          </a>
+
+          <a class="locality-card" href="search.html?location=miyapur" title="Filter properties in Miyapur">
+            <img class="locality-thumb" src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=800&q=80" alt="Miyapur" loading="lazy">
+            <div class="locality-body">
+              <h3>Miyapur & Manikonda</h3>
+              <div class="locality-price">₹16,000 – ₹30,000 / mo</div>
+              <div class="locality-features">
+                🚇 Red Line terminal metro depot<br>
+                💰 Budget-friendly residential rental value<br>
+                🛒 Established markets & daily transit
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footgrid">
+        <div>
+          <a class="logo" href="index.html" aria-label="RentSpace Home"><img src="logo-light.png" alt="RentSpace" class="logo-img footer-logo-img"></a>
+          <p>A clearer way to discover, compare and enquire about rental and sale properties.</p>
+        </div>
+        <div>
+          <b>Explore</b>
+          <a href="search.html">Search properties</a>
+          <a href="compare.html">Compare & List</a>
+          <a href="#">Privacy policy</a>
+        </div>
+        <div>
+          <b>Social Links</b>
+          <div class="social-links">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Facebook" title="Facebook">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram" title="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="WhatsApp" title="WhatsApp">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="copy">© 2026 RentSpace. Demo listings only; details are illustrative and not verified.</div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
