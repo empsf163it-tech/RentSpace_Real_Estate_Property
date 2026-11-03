@@ -28,42 +28,64 @@
   </header>
 
   <main>
-    <section class="pagehead">
+    <!-- Search Top Section with Filter Bar -->
+    <section class="search-top-section">
       <div class="container">
-        <div class="eyebrow">Find your space</div>
-        <h1>Search properties</h1>
-        <p>Explore properties and narrow your options with practical filters.</p>
+        <div class="search-head">
+          <div class="eyebrow">Find your space</div>
+          <h1>Search properties</h1>
+          <p>Explore rental and commercial properties with transparent pricing and verified details.</p>
+        </div>
+
+        <!-- Top Search Filter Bar -->
+        <div class="search-filter-card">
+          <div class="search-filter-row">
+            <div class="filter-col">
+              <label for="loc">Location</label>
+              <div class="filter-input-wrap">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <input id="loc" placeholder="City or locality" oninput="filterProps()">
+              </div>
+            </div>
+
+            <div class="filter-col">
+              <label for="prop-type">Property type</label>
+              <div class="filter-input-wrap">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+                <select id="prop-type" onchange="filterProps()">
+                  <option value="all">All property types</option>
+                  <option value="residential">Residential</option>
+                  <option value="commercial">Commercial</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="filter-col">
+              <label for="maxprice">Monthly budget</label>
+              <div class="filter-input-wrap">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+                <select id="maxprice" onchange="filterProps()">
+                  <option value="999999">Any budget</option>
+                  <option value="20000">Up to ₹20,000</option>
+                  <option value="30000">Up to ₹30,000</option>
+                  <option value="50000">Up to ₹50,000</option>
+                  <option value="70000">Up to ₹70,000</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="filter-btn-col">
+              <button class="btn" onclick="filterProps()">Apply filters</button>
+              <button class="outline" onclick="resetProps()">Reset</button>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Search Layout: Filters + Results -->
-    <div class="container layout">
-      <aside class="filters">
-        <h3>Refine your search</h3>
-        <div class="filtergroup">
-          <b>Location</b>
-          <input id="loc" placeholder="City or locality">
-        </div>
-        <div class="filtergroup">
-          <b>Property type</b>
-          <label><input type="radio" name="type" value="all" checked> All</label>
-          <label><input type="radio" name="type" value="residential"> Residential</label>
-          <label><input type="radio" name="type" value="commercial"> Commercial</label>
-        </div>
-        <div class="filtergroup">
-          <b>Maximum monthly price</b>
-          <select id="maxprice">
-            <option value="999999">Any budget</option>
-            <option value="20000">₹20,000</option>
-            <option value="30000">₹30,000</option>
-            <option value="50000">₹50,000</option>
-          </select>
-        </div>
-        <button style="width:100%" onclick="filterProps()">Apply filters</button>
-        <button class="outline" style="width:100%;margin-top:8px" onclick="resetProps()">Reset</button>
-      </aside>
-
-      <section>
+    <!-- Search Results Section -->
+    <section class="section search-results-section">
+      <div class="container">
         <div class="resulthead">
           <b id="count">6 example properties</b>
           <select id="sort" onchange="sortProps()" style="width:auto">
@@ -164,8 +186,8 @@
             </div>
           </article>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
 
     <!-- NEW SECTION: Neighborhood Spotlight & Rental Guide -->
     <section class="section soft" style="margin-top:40px">
@@ -179,52 +201,60 @@
           <a class="locality-card" href="search.html?location=gachibowli" title="Filter properties in Gachibowli">
             <img class="locality-thumb" src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80" alt="Gachibowli" loading="lazy">
             <div class="locality-body">
+              <div class="locality-eyebrow">Financial District</div>
               <h3>Gachibowli</h3>
-              <div class="locality-price">₹22,000 – ₹42,000 / mo</div>
+              <div class="locality-price">₹22,000 – ₹42,000 <small>/ month</small></div>
               <div class="locality-features">
-                🚇 10 min to Financial District<br>
-                🏫 Near top international schools<br>
-                ✨ High gated communities
+                <span>🚇 10 min to Financial District</span>
+                <span>🏫 Near top international schools</span>
+                <span>✨ High gated communities</span>
               </div>
+              <div class="locality-link">Explore properties →</div>
             </div>
           </a>
 
           <a class="locality-card" href="search.html?location=hitec" title="Filter properties in HITEC City">
             <img class="locality-thumb" src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" alt="HITEC City" loading="lazy">
             <div class="locality-body">
-              <h3>HITEC City & Madhapur</h3>
-              <div class="locality-price">₹26,000 – ₹48,000 / mo</div>
+              <div class="locality-eyebrow">IT &amp; Tech Corridor</div>
+              <h3>HITEC City &amp; Madhapur</h3>
+              <div class="locality-price">₹26,000 – ₹48,000 <small>/ month</small></div>
               <div class="locality-features">
-                🚇 Blue Line Metro station<br>
-                💼 Walking distance to major tech parks<br>
-                🍽️ Vibrant cafe & dining hub
+                <span>🚇 Blue Line Metro station</span>
+                <span>💼 Walking distance to major tech parks</span>
+                <span>🍽️ Vibrant cafe &amp; dining hub</span>
               </div>
+              <div class="locality-link">Explore properties →</div>
             </div>
           </a>
 
           <a class="locality-card" href="search.html?location=kondapur" title="Filter properties in Kondapur">
             <img class="locality-thumb" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" alt="Kondapur" loading="lazy">
             <div class="locality-body">
+              <div class="locality-eyebrow">Prime Residential</div>
               <h3>Kondapur</h3>
-              <div class="locality-price">₹20,000 – ₹38,000 / mo</div>
+              <div class="locality-price">₹20,000 – ₹38,000 <small>/ month</small></div>
               <div class="locality-features">
-                🌳 Next to Botanical Garden<br>
-                🛍️ Close to AMB & Sarath City Capital<br>
-                🏡 Ideal for working families
+                <span>🌳 Next to Botanical Garden</span>
+                <span>🛍️ Close to AMB &amp; Sarath City Capital</span>
+                <span>🏡 Ideal for working families</span>
               </div>
+              <div class="locality-link">Explore properties →</div>
             </div>
           </a>
 
           <a class="locality-card" href="search.html?location=miyapur" title="Filter properties in Miyapur">
             <img class="locality-thumb" src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=800&q=80" alt="Miyapur" loading="lazy">
             <div class="locality-body">
-              <h3>Miyapur & Manikonda</h3>
-              <div class="locality-price">₹16,000 – ₹30,000 / mo</div>
+              <div class="locality-eyebrow">Metro Corridor</div>
+              <h3>Miyapur &amp; Manikonda</h3>
+              <div class="locality-price">₹16,000 – ₹30,000 <small>/ month</small></div>
               <div class="locality-features">
-                🚇 Red Line terminal metro depot<br>
-                💰 Budget-friendly residential rental value<br>
-                🛒 Established markets & daily transit
+                <span>🚇 Red Line terminal metro depot</span>
+                <span>💰 Budget-friendly residential rental value</span>
+                <span>🛒 Established markets &amp; daily transit</span>
               </div>
+              <div class="locality-link">Explore properties →</div>
             </div>
           </a>
         </div>

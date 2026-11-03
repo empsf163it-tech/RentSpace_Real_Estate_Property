@@ -234,22 +234,41 @@ function highlightActiveNav() {
 }
 
 function filterProps() {
-  const l = (document.getElementById('loc').value || '').toLowerCase();
-  const t = document.querySelector('input[name=type]:checked').value;
-  const p = +document.getElementById('maxprice').value;
+  const locEl = document.getElementById('loc');
+  const l = (locEl ? locEl.value : '').toLowerCase().trim();
+
+  const typeSelect = document.getElementById('prop-type');
+  const typeRadio = document.querySelector('input[name=type]:checked');
+  const t = typeSelect ? typeSelect.value : (typeRadio ? typeRadio.value : 'all');
+
+  const maxEl = document.getElementById('maxprice');
+  const p = maxEl ? +maxEl.value : 999999;
+
   let c = 0;
   document.querySelectorAll('#results .property').forEach(x => {
-    const ok = x.dataset.location.includes(l) && (t === 'all' || x.dataset.type === t) && +x.dataset.price <= p;
+    const locMatch = x.dataset.location.toLowerCase().includes(l);
+    const typeMatch = (t === 'all' || x.dataset.type === t);
+    const priceMatch = +x.dataset.price <= p;
+    const ok = locMatch && typeMatch && priceMatch;
     x.style.display = ok ? '' : 'none';
     if (ok) c++;
   });
-  document.getElementById('count').textContent = c + ' example properties';
+  const countEl = document.getElementById('count');
+  if (countEl) countEl.textContent = c + ' example properties';
 }
 
 function resetProps() {
-  document.getElementById('loc').value = '';
-  document.getElementById('maxprice').value = '999999';
-  document.querySelector('input[name=type][value=all]').checked = true;
+  const locEl = document.getElementById('loc');
+  if (locEl) locEl.value = '';
+
+  const typeSelect = document.getElementById('prop-type');
+  if (typeSelect) typeSelect.value = 'all';
+  const typeRadio = document.querySelector('input[name=type][value=all]');
+  if (typeRadio) typeRadio.checked = true;
+
+  const maxEl = document.getElementById('maxprice');
+  if (maxEl) maxEl.value = '999999';
+
   filterProps();
 }
 
@@ -329,11 +348,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Search query sync
-  const q = new URLSearchParams(location.search).get('location');
-  if (q && document.getElementById('loc')) {
-    document.getElementById('loc').value = q;
-    filterProps();
+  // Search query sync from URL parameters
+  const params = new URLSearchParams(window.location.search);
+  const qLoc = params.get('location');
+  const qType = params.get('type');
+  const qBudget = params.get('budget');
+
+  if (document.getElementById('loc')) {
+    if (qLoc) document.getElementById('loc').value = qLoc;
+    if (qType) {
+      const typeSelect = document.getElementById('prop-type');
+      if (typeSelect) typeSelect.value = qType.toLowerCase();
+      const typeRadio = document.querySelector(`input[name=type][value="${qType.toLowerCase()}"]`);
+      if (typeRadio) typeRadio.checked = true;
+    }
+    if (qBudget && document.getElementById('maxprice')) {
+      document.getElementById('maxprice').value = qBudget;
+    }
+    if (qLoc || qType || qBudget) {
+      filterProps();
+    }
   }
 });
 
